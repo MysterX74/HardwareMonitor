@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <item name="android.service.autofill.AutofillService android.service.autofill.FillEventHistory getFillEventHistory()">
+    <annotation name="android.support.annotation.Nullable" />
+  </item>
+  <item name="android.service.autofill.AutofillService void onCreate()">
+    <annotation name="android.support.annotation.CallSuper" />
+  </item>
+  <item name="android.service.autofill.AutofillService void onFillRequest(android.service.autofill.FillRequest, android.os.CancellationSignal, android.service.autofill.FillCallback) 0">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.AutofillService void onFillRequest(android.service.autofill.FillRequest, android.os.CancellationSignal, android.service.autofill.FillCallback) 1">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.AutofillService void onFillRequest(android.service.autofill.FillRequest, android.os.CancellationSignal, android.service.autofill.FillCallback) 2">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.AutofillService void onSaveRequest(android.service.autofill.SaveRequest, android.service.autofill.SaveCallback) 0">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.AutofillService void onSaveRequest(android.service.autofill.SaveRequest, android.service.autofill.SaveCallback) 1">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.BatchUpdates.Builder android.service.autofill.BatchUpdates.Builder transformChild(int, android.service.autofill.Transformation) 1">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.BatchUpdates.Builder android.service.autofill.BatchUpdates.Builder updateTemplate(android.widget.RemoteViews) 0">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.CharSequenceTransformation.Builder Builder(android.view.autofill.AutofillId, java.util.regex.Pattern, java.lang.String) 0">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.CharSequenceTransformation.Builder Builder(android.view.autofill.AutofillId, java.util.regex.Pattern, java.lang.String) 1">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item name="android.service.autofill.CharSequenceTransformation.Builder Builder(android.view.autofill.AutofillId, java.util.regex.Pattern, java.lang.String) 2">
+    <annotation name="android.support.annotation.NonNull" />
+  </item>
+  <item
