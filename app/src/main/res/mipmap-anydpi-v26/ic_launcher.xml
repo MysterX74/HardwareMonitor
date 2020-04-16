@@ -1,9 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-    <component name="AndroidLayouts">
-        <shared>
-            <config>
-                <device id="pixel_3_xl" />
-                <device id="wear_round_chin_320_290" />
-                <device id="tv_1080p" />
-                <device id="wear_squa
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
