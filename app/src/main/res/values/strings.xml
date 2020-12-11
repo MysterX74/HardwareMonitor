@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">HardwareMonitor</string>
+    <string name="infoGene">Informations générales</string>
+    <string name="nonDispo">Non disponible</string>
+    <string name="textManuf">Fabriquant</string>
+    <string name="textProduit">Nom du produit</string>
+    <string name="textId">Id produit</string>
+    <string name="textNomHard">Nom du hardware</string>
+    <string name="textSonnerie">Sonnerie en mode</string>
+    <string name="btnReseau">Réseau</string>
+    <string name="bntCpu">CPU</string>
+    <string name="sonSilence">Silencieux</string>
+    <string name="sonVibreur">Vibreur</string>
+    <string name="sonNormal">Normal</string>
 </resources>
