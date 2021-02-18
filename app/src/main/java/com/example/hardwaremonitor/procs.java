@@ -32,6 +32,8 @@ public class procs extends AppCompatActivity {
 
         monGestionnaire = new Handler();
         monGestionnaire.postDelayed(tacheDeFond, periode);
+
+
     };
 
     public void menuPrin(View v) {
@@ -39,7 +41,5 @@ public class procs extends AppCompatActivity {
         Intent intent1 = new Intent(procs.this, MainActivity.class);
         startActivity(intent1);
     };
-
-   // public static final int DEVICE_TEMPERATURE_CPU { };
 
 }
