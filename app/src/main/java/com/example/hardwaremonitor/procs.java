@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -47,6 +48,8 @@ public class procs extends AppCompatActivity {
         setContentView(R.layout.activity_procs);
         Button button = (Button) findViewById(R.id.button);
 
+        String rep;
+
         //informarion générale invariante
         infoModel = findViewById(R.id.infoModel);
         infoModel.setText(Build.MODEL);
@@ -63,9 +66,11 @@ public class procs extends AppCompatActivity {
         infoRel = findViewById(R.id.infoRel);
         infoRel.setText(Build.VERSION.RELEASE);
         infoVerSDK = findViewById(R.id.infoVerSDK);
-        infoVerSDK.setText(Build.VERSION.SDK_INT);
+        infoVerSDK.setText(Integer.toString(Build.VERSION.SDK_INT));
         infoOS = findViewById(R.id.infoOS);
+        rep= Build.VERSION.BASE_OS;
         infoOS.setText(Build.VERSION.BASE_OS);
+        Log.w("BTO","Build base OS "+rep );
         infoArchOS = findViewById(R.id.infoArchOS);
         infoArchOS.setText(getProperty("os.arch"));
         infoVerJava = findViewById(R.id.infoVerJava);
