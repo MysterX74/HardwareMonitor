@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     public void procs(View v){
         //Information Processeur
         // commentaire ci-dessous à supprimer quand l'activité sera créée dans le projet
-        intent = new Intent(MainActivity.this, procs.class);
-        startActivity(intent);
+       intent = new Intent(MainActivity.this, procs.class);
+       startActivity(intent);
     }
 }
