@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background_gradiant">
 
     <TextView
         android:id="@+id/infoGene"
@@ -104,8 +105,8 @@
         app:layout_constraintTop_toBottomOf="@+id/textId"
         app:layout_constraintBottom_toTopOf="@id/textSonnerie"
         app:layout_constraintStart_toStartOf="parent"
-
         />
+
     <TextView
         android:id="@+id/infoNomHard"
         android:layout_width="wrap_content"
@@ -136,23 +137,30 @@
         app:layout_constraintBottom_toTopOf="@id/separationInfoBtn"
         app:layout_constraintStart_toStartOf="@id/guideInfo"
         />
-    <Button
+    <ImageButton
         android:id="@+id/btnReseau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btnReseau"
+        android:src="@drawable/gugus"
         android:onClick="netWork"
         app:layout_constraintTop_toBottomOf="@+id/separationInfoBtn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bntCpu"
+        android:background="@drawable/button_form1"
         />
-    <Button
+
+    <ImageButton
         android:id="@+id/bntCpu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bntCpu"
+
+        android:src="@drawable/mysterx"
+        android:maxHeight="60dp"
+        android:maxWidth="70dp"
+
         android:onClick="procs"
+        android:background="@drawable/button_form1"
         app:layout_constraintTop_toBottomOf="@+id/btnReseau"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
