@@ -1,5 +1,6 @@
 package com.example.hardwaremonitor;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -7,8 +8,10 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
@@ -48,6 +51,8 @@ public class netWork extends AppCompatActivity {
 
     int wifiOn = 1;
 
+    int requestgps = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +66,66 @@ public class netWork extends AppCompatActivity {
 
         varText=(TextView) findViewById(R.id.TV_WifiInfo);
 
+        if (ContextCompat.checkSelfPermission(netWork.this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(netWork.this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)){
+                ActivityCompat.requestPermissions(netWork.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }else{
+                ActivityCompat.requestPermissions(netWork.this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }
+        }
+
 
     };
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults){
+        switch (requestCode){
+            case 1: {
+                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    if (ContextCompat.checkSelfPermission(netWork.this,
+                            Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+                        Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+        }
+    }
+
+    public void statusCheck() {
+        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            buildAlertMessageNoGps();
+
+        }
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        requestgps=1;
+        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, final int id) {
+                        dialog.cancel();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
 
 
 
@@ -72,7 +135,9 @@ public class netWork extends AppCompatActivity {
             public void run() {
                 handler.postDelayed(runnable, delay);
                 checkNetworkConnectionStatus();
-
+                if (requestgps==0){
+                    statusCheck();
+                }
 
             }
         }, delay);
@@ -122,8 +187,8 @@ public class netWork extends AppCompatActivity {
                 wifiOn = 1;
             }
             else if (mobileConnected){
-
                 ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService(CONNECTIVITY_SERVICE);
+
                 NetworkCapabilities nc = null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                     nc = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
