@@ -17,6 +17,7 @@
     <string name="textProduit">Nom du produit</string>
     <string name="textId">Id produit</string>
     <string name="menu_principal">Menu principal</string>
+    <string name="cpu">CPU</string>
 
 
     <!--Guillaume -->
@@ -26,6 +27,6 @@
     <string name="sonSilence">Silencieux</string>
     <string name="sonVibreur">Vibreur</string>
     <string name="sonNormal">Normal</string>
-    <string name="cpu">CPU</string>
+
 
 </resources>
