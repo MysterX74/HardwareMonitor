@@ -52,7 +52,6 @@ public class netWork extends AppCompatActivity {
     int wifiOn = 1;
 
     int requestgps = 0;
-    int requestgps2 = 0;
 
 
     @Override
