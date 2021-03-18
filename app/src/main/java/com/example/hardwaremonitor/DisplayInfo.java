@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -32,16 +33,16 @@ public class DisplayInfo extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         String widthh= String.valueOf(width);
-        String heightt= String.valueOf(height+120);
+        String heightt= String.valueOf(height + getNavigationBarHeight());
         String resolution = heightt + 'x' + widthh + " px";
 
         //physical size in inch
         double x = Math.pow(width/dm.xdpi,2);
         double y = Math.pow(height/dm.ydpi,2);
-        double screenInches = Math.sqrt(x+y)+0.28;
+        double screenInches = Math.sqrt(x+y);
         NumberFormat form = NumberFormat.getNumberInstance();
-        form.setMinimumFractionDigits(2);
-        form.setMaximumFractionDigits(2);
+        form.setMinimumFractionDigits(1);
+        form.setMaximumFractionDigits(1);
         String screenInchesOuput = form.format(screenInches);
 
         //FPS
@@ -61,7 +62,7 @@ public class DisplayInfo extends AppCompatActivity {
             orientation = "Vertical";
         }
 
-        String Density = String.valueOf(DisplayMetrics.DENSITY_HIGH+156);
+        String Density = String.valueOf(getResources().getDisplayMetrics().densityDpi-45);
 
 
         String info = "\nRefresh Rate : "+refreshRatingOutput+" Hz"+"\n"+
@@ -73,7 +74,20 @@ public class DisplayInfo extends AppCompatActivity {
         varText.setText(info);
     }
 
-
+    private int getNavigationBarHeight() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            int usableHeight = metrics.heightPixels;
+            getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+            int realHeight = metrics.heightPixels;
+            if (realHeight > usableHeight)
+                return realHeight - usableHeight;
+            else
+                return 0;
+        }
+        return 0;
+    }
 
 
     /*BUTTON*/
