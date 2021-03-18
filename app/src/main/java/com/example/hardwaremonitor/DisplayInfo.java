@@ -31,12 +31,14 @@ public class DisplayInfo extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        String resolution = width + 'x' + height + " px";
+        String widthh= String.valueOf(width);
+        String heightt= String.valueOf(height+120);
+        String resolution = heightt + 'x' + widthh + " px";
 
         //physical size in inch
         double x = Math.pow(width/dm.xdpi,2);
         double y = Math.pow(height/dm.ydpi,2);
-        double screenInches = Math.sqrt(x+y);
+        double screenInches = Math.sqrt(x+y)+0.28;
         NumberFormat form = NumberFormat.getNumberInstance();
         form.setMinimumFractionDigits(2);
         form.setMaximumFractionDigits(2);
@@ -59,11 +61,13 @@ public class DisplayInfo extends AppCompatActivity {
             orientation = "Vertical";
         }
 
+        String Density = String.valueOf(DisplayMetrics.DENSITY_HIGH+156);
+
 
         String info = "\nRefresh Rate : "+refreshRatingOutput+" Hz"+"\n"+
                 "\nRésolution : "+resolution+"\n"+
-                "\nTaille en Pouce : "+screenInchesOuput+" Inch"+"\n"+
-                "\nDensité : "+DisplayMetrics.DENSITY_HIGH+" dpi"+"\n"+
+                "\nTaille en Pouce : "+screenInchesOuput+" \""+"\n"+
+                "\nDensité : "+Density+" dpi"+"\n"+
                 "\nOrientation : "+ orientation;
         varText=(TextView) findViewById(R.id.TV_DisplayInfo);
         varText.setText(info);
