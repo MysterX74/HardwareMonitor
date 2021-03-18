@@ -129,11 +129,11 @@ public class netWork extends AppCompatActivity {
                 }
                 String downSpeed = null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    downSpeed = String.valueOf(nc.getLinkDownstreamBandwidthKbps()/800);
+                    downSpeed = String.valueOf(nc.getLinkDownstreamBandwidthKbps()/1024);
                 }
                 String upSpeed = null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    upSpeed = String.valueOf(nc.getLinkUpstreamBandwidthKbps()/800);
+                    upSpeed = String.valueOf(nc.getLinkUpstreamBandwidthKbps()/1024);
                 }
                 mConStatusIv.setImageResource(R.drawable.ic_action_data);
                 mConStatusTv.setText("Connecté en données mobile "+text+"\nDown : "+downSpeed+" Kb/s | Up : "+upSpeed+" Kb/s");
