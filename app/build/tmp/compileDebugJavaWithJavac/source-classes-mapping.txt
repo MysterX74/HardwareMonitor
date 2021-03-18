@@ -1,0 +1,10 @@
+com/example/hardwaremonitor/procs.java
+ com.example.hardwaremonitor.procs
+ com.example.hardwaremonitor.procs$1
+com/example/hardwaremonitor/netWork.java
+ com.example.hardwaremonitor.netWork
+com/example/hardwaremonitor/MainActivity.java
+ com.example.hardwaremonitor.MainActivity
+ com.example.hardwaremonitor.MainActivity$1
+com/example/hardwaremonitor/BuildConfig.java
+ com.example.hardwaremonitor.BuildConfig
