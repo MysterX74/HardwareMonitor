@@ -59,7 +59,7 @@
 
     <TextView
         android:id="@+id/TV_WifiInfo"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:textAlignment="center"
@@ -74,6 +74,30 @@
         app:layout_constraintBottom_toTopOf="@+id/BTN_SpeedTest"
 
         />
+    <ImageButton
+        android:id="@+id/BTN_WifiOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@id/conStatusTv"
+        app:layout_constraintBottom_toTopOf="@id/BTN_Battery"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/TV_WifiInfo"
+
+        android:textSize="15dp"
+        android:src="@drawable/ic_wifion_12"
+        android:background="#B9000000"
+        android:minHeight="40dp"
+        android:minWidth="40dp"
+
+        android:layout_marginLeft="10dp"
+
+        android:onClick="WifiOn"
+        android:visibility="invisible"
+        />
+
 
 
     <ImageButton

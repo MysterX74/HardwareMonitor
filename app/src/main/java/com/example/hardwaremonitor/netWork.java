@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +25,8 @@ import android.provider.Settings;
 import android.text.format.Formatter;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +56,8 @@ public class netWork extends AppCompatActivity {
 
     int requestgps = 0;
 
+    int MacReveal = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +84,7 @@ public class netWork extends AppCompatActivity {
         }
 
 
-    };
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -116,6 +121,7 @@ public class netWork extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, final int id) {
                         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        requestgps = 0;
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -229,24 +235,35 @@ public class netWork extends AppCompatActivity {
         int ip = wifiInfo.getIpAddress();
         String ipAdress = Formatter.formatIpAddress(ip);
 
-        String macAdress = getMacAddr();/*wifiInfo.getMacAddress()*/;
-
-        /*int speedMbps = wifiInfo.getLinkSpeed();
-        String SpeedDown = String.valueOf(speedMbps);*/
+        String macAdress = getMacAddr();
 
         String SSID = wifiInfo.getSSID();
 
-
         if (wifiOn == 1){
             wifiOn=1;
-            macAdress=macAdress;
+            MacReveal = 1;
+            if (MacReveal == 1){
+                ImageButton BTN_WifiOn = (ImageButton) findViewById(R.id.BTN_WifiOn);
+                BTN_WifiOn.setVisibility(View.INVISIBLE);
+            }
         }else if(wifiOn == 0){
             ipAdress= mobileIp;
-            macAdress= Settings.Secure.getString(this.getApplicationContext().getContentResolver(), "android_id");
+            if (MacReveal == 0){
+                macAdress= "Turn on wifi ->";
+                ImageButton BTN_WifiOn = (ImageButton) findViewById(R.id.BTN_WifiOn);
+                BTN_WifiOn.setVisibility(View.VISIBLE);
+            }else{
+                ImageButton BTN_WifiOn = (ImageButton) findViewById(R.id.BTN_WifiOn);
+                BTN_WifiOn.setVisibility(View.INVISIBLE);
+            }
             SSID = "Données mobiles activées !";
         }else if(wifiOn == 5){
             ipAdress="No Ip";
             SSID = "Wifi désactivé !";
+            if (MacReveal == 1){
+                ImageButton BTN_WifiOn = (ImageButton) findViewById(R.id.BTN_WifiOn);
+                BTN_WifiOn.setVisibility(View.INVISIBLE);
+            }
         }
 
 
@@ -289,6 +306,10 @@ public class netWork extends AppCompatActivity {
     }
 
 
+
+    public void WifiOn(View view) {
+        startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+    }
 
     public void BTN_Back(View view) {
         Intent BTN_Back = new Intent(netWork.this, MainActivity.class);
