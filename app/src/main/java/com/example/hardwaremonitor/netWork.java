@@ -122,6 +122,7 @@ public class netWork extends AppCompatActivity {
                 wifiOn = 1;
             }
             else if (mobileConnected){
+
                 ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService(CONNECTIVITY_SERVICE);
                 NetworkCapabilities nc = null;
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -135,6 +136,7 @@ public class netWork extends AppCompatActivity {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     upSpeed = String.valueOf(nc.getLinkUpstreamBandwidthKbps()/1024);
                 }
+
                 mConStatusIv.setImageResource(R.drawable.ic_action_data);
                 mConStatusTv.setText("Connecté en données mobile "+text+"\nDown : "+downSpeed+" Kb/s | Up : "+upSpeed+" Kb/s");
                 wifiOn = 0;
@@ -176,8 +178,10 @@ public class netWork extends AppCompatActivity {
         }else if(wifiOn == 0){
             ipAdress= mobileIp;
             macAdress= Settings.Secure.getString(this.getApplicationContext().getContentResolver(), "android_id");
+            SSID = "Données mobiles activées !";
         }else if(wifiOn == 5){
             ipAdress="No Ip";
+            SSID = "Wifi désactivé !";
         }
 
 

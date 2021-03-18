@@ -1,16 +1,30 @@
 <resources>
+     <!--Maixent -->
     <string name="app_name">HardwareMonitor</string>
     <string name="infoGene">Informations générales</string>
     <string name="nonDispo">Non disponible</string>
+    <string name="textModel">Modèle</string>
     <string name="textManuf">Fabriquant</string>
+    <string name="textNomHard">Nom du hardware</string>
+    <string name="textDev">Appareil</string>
+    <string name="textBoard">Board</string>
+    <string name="textCode">Code version</string>
+    <string name="textRel">Release version</string>
+    <string name="textVerSDK">SDK version</string>
+    <string name="textOS">Système d\'exploitation</string>
+    <string name="textArchOS">Architecture système</string>
+    <string name="textVerJava">Version Java</string>
     <string name="textProduit">Nom du produit</string>
     <string name="textId">Id produit</string>
-    <string name="textNomHard">Nom du hardware</string>
+    <string name="menu_principal">Menu principal</string>
+
+
+    <!--Guillaume -->
     <string name="textSonnerie">Sonnerie en mode</string>
     <string name="btnReseau">Réseau</string>
     <string name="bntCpu">CPU</string>
     <string name="sonSilence">Silencieux</string>
     <string name="sonVibreur">Vibreur</string>
     <string name="sonNormal">Normal</string>
-
+    <string name="cpu">CPU</string>
 </resources>
