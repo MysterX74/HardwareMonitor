@@ -1,10 +1,13 @@
 package com.example.hardwaremonitor;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HardwarePropertiesManager;
+import android.os.StatFs;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +15,10 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.File;
+import java.text.DateFormat;
+import java.util.Date;
 
 import static java.lang.System.getProperty;
 
@@ -50,7 +57,10 @@ public class procs extends AppCompatActivity {
         Button button = (Button) findViewById(R.id.button);
         HardwarePropertiesManager hPM;
 
-        String rep;
+        String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+
+        // textView is the TextView view that should display it
+        clock.setText(currentDateTimeString);
 
         //informarion générale invariante
         infoModel = findViewById(R.id.infoModel);
@@ -70,18 +80,31 @@ public class procs extends AppCompatActivity {
         infoVerSDK = findViewById(R.id.infoVerSDK);
         infoVerSDK.setText(Integer.toString(Build.VERSION.SDK_INT));
         infoOS = findViewById(R.id.infoOS);
-        rep= Build.VERSION.BASE_OS;
         infoOS.setText(Build.VERSION.BASE_OS);
-        Log.w("BTO","Build base OS "+rep );
         infoArchOS = findViewById(R.id.infoArchOS);
         infoArchOS.setText(getProperty("os.arch"));
         infoVerJava = findViewById(R.id.infoVerJava);
         infoVerJava.setText(getProperty("java.vm.version"));
 
+        ActivityManager activityManager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        float totalMem = memoryInfo.totalMem/(1024*1024);
+        float freeMem = memoryInfo.availMem/(1024*1024);
+        Log.w("BTO","Total mem "+Float.toString(totalMem));
+        Log.w("BTO","Free mem "+Float.toString(freeMem));
+        //ROM
+        File path = Environment.getDataDirectory();
+        StatFs stat = new StatFs(path.getPath());
+        float blockSize = stat.getBlockSizeLong();
+        float totalBlock = stat.getBlockCountLong();
+//        float blockLibre = stat.
+        Log.w("BTO", "BlockSize "+Float.toString(blockSize));
+        Log.w("BTO", "totalBlock "+Float.toString(totalBlock));
+
 
         monGestionnaire = new Handler();
         monGestionnaire.postDelayed(tacheDeFond, periode);
-
 
     };
 
