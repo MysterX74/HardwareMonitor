@@ -37,12 +37,13 @@ public class DisplayInfo extends AppCompatActivity {
         String resolution = heightt + 'x' + widthh + " px";
 
         //physical size in inch
-        double x = Math.pow(width/dm.xdpi,2);
-        double y = Math.pow(height/dm.ydpi,2);
+        double minush = height/width-0.15;
+        double x = Math.pow(width/dm.xdpi,minush);
+        double y = Math.pow(height/dm.ydpi,minush);
         double screenInches = Math.sqrt(x+y);
         NumberFormat form = NumberFormat.getNumberInstance();
-        form.setMinimumFractionDigits(1);
-        form.setMaximumFractionDigits(1);
+        form.setMinimumFractionDigits(2);
+        form.setMaximumFractionDigits(2);
         String screenInchesOuput = form.format(screenInches);
 
         //FPS
@@ -62,7 +63,7 @@ public class DisplayInfo extends AppCompatActivity {
             orientation = "Vertical";
         }
 
-        String Density = String.valueOf(getResources().getDisplayMetrics().densityDpi-45);
+        String Density = String.valueOf(getResources().getDisplayMetrics().densityDpi);
 
 
         String info = "\nRefresh Rate : "+refreshRatingOutput+" Hz"+"\n"+
