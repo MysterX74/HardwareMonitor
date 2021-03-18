@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".netWork"
+    android:background="@drawable/background_gradiant">
+
+    <TextView
+        android:id="@+id/TV_Titre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layoutbattery2"
+
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="50dp"
+
+
+        android:text="Battery Info"
+        android:textSize="50dp"
+        android:textColor="#000"/>
+
+
+    <LinearLayout
+        android:id="@+id/layoutbattery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Titre"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_SpeedTest" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layoutbattery2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="#000"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Titre"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_SpeedTest">
+
+        <TableLayout
+            android:background="#000"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="1">
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--<TextView
+                    android:id="@+id/battery_percentage"
+                    android:text="Battery Percentage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:layout_span="2"
+                    />-->
+            </TableRow>
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_gravity="center"
+                    android:layout_span="2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="10dp">
+                    <ProgressBar
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/pb"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:progressDrawable="@drawable/progressbar_states"
+                        android:layout_gravity="center_horizontal"/>
+                    <TextView
+                        android:id="@+id/tv_pourcentage"
+                        android:text="%"
+                        android:textSize="25sp"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/couleurNom"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"/>
+                </RelativeLayout>
+            </TableRow>
+
+            <TableRow android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center">
+                <TextView
+                    android:id="@+id/textview1"
+                    android:textAlignment="textEnd"
+                    android:text="Part Name Info Get"
+                    android:textSize="20sp"
+                    android:textColor="#FFF"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+                <TextView
+                    android:id="@+id/textview2"
+                    android:text="Part Set Info"
+                    android:textSize="20sp"
+                    android:textColor="#FFF"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"/>
+            </TableRow>
+        </TableLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <ImageButton
+        android:id="@+id/BTN_NetInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@+id/layoutbattery2"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_Back"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/BTN_SpeedTest"
+
+        android:src="@drawable/ic_networkcheck_x48"
+        android:onClick="View_Network"
+        android:background="#B9000000"
+        android:minHeight="60dp"
+        android:minWidth="70dp"
+        />
+
+    <ImageButton
+        android:id="@+id/BTN_SpeedTest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@+id/layoutbattery2"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_Back"
+
+        app:layout_constraintRight_toLeftOf="@id/BTN_SimInfo"
+        app:layout_constraintLeft_toRightOf="@+id/BTN_NetInfo"
+
+        android:src="@drawable/ic_speedtest_x48"
+        android:onClick="View_SpeedTest"
+        android:background="#B9000000"
+        android:minHeight="60dp"
+        android:minWidth="70dp"
+        />
+
+    <ImageButton
+        android:id="@+id/BTN_SimInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@+id/layoutbattery2"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_Back"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/BTN_SpeedTest"
+
+        android:src="@drawable/ic_display_info_x48"
+        android:onClick="View_SimInfo"
+        android:background="#B9000000"
+        android:minHeight="60dp"
+        android:minWidth="70dp"
+        />
+
+
+    <ImageButton
+        android:id="@+id/BTN_Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@+id/BTN_SpeedTest"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+        android:textSize="35dp"
+        android:src="@drawable/ic_homemenu_x48"
+        android:onClick="BTN_Back"
+        android:background="#B9000000"
+        android:minHeight="60dp"
+        android:minWidth="70dp"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     public void netWork(View v){
         //Information Réseau
         // commentaire ci-dessous à supprimer quand l'activité sera créée dans le projet
-        intent = new Intent(MainActivity.this, netWork.class);
+        intent = new Intent(MainActivity.this, netWork.class); 
         startActivity(intent);
     }
 
