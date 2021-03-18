@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.HardwarePropertiesManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +48,7 @@ public class procs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_procs);
         Button button = (Button) findViewById(R.id.button);
+        HardwarePropertiesManager hPM;
 
         String rep;
 
