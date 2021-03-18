@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.text.format.Formatter;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -94,10 +96,10 @@ public class netWork extends AppCompatActivity {
                 if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     if (ContextCompat.checkSelfPermission(netWork.this,
                             Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
-                        Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Permission Accordée", Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Permission Refusée", Toast.LENGTH_SHORT).show();
                 }
                 return;
             }
@@ -108,23 +110,28 @@ public class netWork extends AppCompatActivity {
         final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            buildAlertMessageNoGps();
-
+            if (wifiOn==1){
+                buildAlertMessageNoGps();
+            }
         }
     }
 
     private void buildAlertMessageNoGps() {
+
+
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
         requestgps=1;
-        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+        builder.setMessage("La localisation semble désactivée, voulez vous l'activer pour afficher le SSID ?")
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Activer", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, final int id) {
-                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                         requestgps = 0;
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Passer", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, final int id) {
                         dialog.cancel();
                     }
