@@ -185,6 +185,7 @@ public class netWork extends AppCompatActivity {
     private void checkNetworkConnectionStatus() {
         boolean wifiConnected;
         boolean mobileConnected;
+        boolean vpnConnected;
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeInfo = connMgr.getActiveNetworkInfo();
@@ -194,10 +195,11 @@ public class netWork extends AppCompatActivity {
             String text=emoji;
             wifiConnected = activeInfo.getType()==ConnectivityManager.TYPE_WIFI;
             mobileConnected = activeInfo.getType()==ConnectivityManager.TYPE_MOBILE;
-            if(wifiConnected){
-                mConStatusIv.setImageResource(R.drawable.ic_baseline_wifi_24);
-                mConStatusTv.setText("Connecté en Wifi "+text);
-                wifiOn = 1;
+            vpnConnected = activeInfo.getType()==ConnectivityManager.TYPE_VPN;
+            if(vpnConnected){
+                mConStatusIv.setImageResource(R.drawable.ic_vpn_x128);
+                mConStatusTv.setText("Connecté en VPN "+text);
+                wifiOn=1;
             }
             else if (mobileConnected){
                 ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService(CONNECTIVITY_SERVICE);
@@ -218,8 +220,11 @@ public class netWork extends AppCompatActivity {
                 mConStatusIv.setImageResource(R.drawable.ic_action_data);
                 mConStatusTv.setText("Connecté en données mobile "+text+"\nDown : "+downSpeed+" Kb/s | Up : "+upSpeed+" Kb/s");
                 wifiOn = 0;
-
-
+            }
+            else if(wifiConnected){
+                mConStatusIv.setImageResource(R.drawable.ic_baseline_wifi_24);
+                mConStatusTv.setText("Connecté en Wifi "+text);
+                wifiOn = 1;
             }
 
         }

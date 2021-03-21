@@ -31,5 +31,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    implementation'com.mafstech.libs:mafs-image-shape:1.0.4'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
     compile 'com.squareup.okhttp3:okhttp:3.3.0'
 }

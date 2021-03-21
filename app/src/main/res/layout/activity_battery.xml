@@ -191,7 +191,7 @@
         android:textSize="35dp"
         android:src="@drawable/ic_homemenu_x48"
         android:onClick="BTN_Back"
-        android:background="#B9000000"
+        android:background="@drawable/round_button"
         android:minHeight="60dp"
         android:minWidth="70dp"
         />
