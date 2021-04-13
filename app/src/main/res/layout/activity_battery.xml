@@ -148,7 +148,7 @@
         app:layout_constraintRight_toLeftOf="@id/BTN_SimInfo"
         app:layout_constraintLeft_toRightOf="@+id/BTN_NetInfo"
 
-        android:src="@drawable/ic_speedtest_x48"
+        android:src="@drawable/ic_sensor_48"
         android:onClick="View_SpeedTest"
         android:background="#B9000000"
         android:minHeight="60dp"

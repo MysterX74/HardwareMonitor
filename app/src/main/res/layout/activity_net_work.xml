@@ -135,7 +135,7 @@
         app:layout_constraintRight_toLeftOf="@+id/BTN_SimInfo"
         app:layout_constraintLeft_toRightOf="@+id/BTN_Battery"
 
-        android:src="@drawable/ic_speedtest_x48"
+        android:src="@drawable/ic_sensor_48"
         android:onClick="View_SpeedTest"
 
         android:layout_marginBottom="25dp"

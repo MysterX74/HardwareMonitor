@@ -155,8 +155,8 @@
         android:layout_height="wrap_content"
 
         android:onClick="netWork"
-        android:src="@drawable/gugus"
-        android:background="@drawable/button_form1"
+        android:src="@drawable/ic_part1_x64"
+        android:background="#B9000000"
 
         app:layout_constraintTop_toBottomOf="@+id/separationInfoBtn"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,12 +169,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:src="@drawable/mysterx"
+        android:src="@drawable/ic_part2_x64"
+        android:background="#B9000000"
         android:maxHeight="60dp"
         android:maxWidth="70dp"
 
         android:onClick="procs"
-        android:background="@drawable/button_form1"
         app:layout_constraintTop_toBottomOf="@+id/btnReseau"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

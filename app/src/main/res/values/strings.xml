@@ -1,5 +1,5 @@
 <resources>
-     <!--Maixent -->
+    <!--Maixent -->
     <string name="app_name">HardwareMonitor</string>
     <string name="infoGene">Informations générales</string>
     <string name="nonDispo">Non disponible</string>

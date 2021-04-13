@@ -197,9 +197,8 @@ public class BatteryActivity extends AppCompatActivity {
     }
 
     public void View_SpeedTest(View view) {
-        Intent View_SpeedTest = new Intent(BatteryActivity.this, SpeedTestActivity.class);
+        Intent View_SpeedTest = new Intent(BatteryActivity.this, SensorActivity.class);
         this.finish();
-        Toast.makeText(getApplicationContext(),  "/!\\ Veuillez attendre le chargement du site pour effectuer un SpeedTest", Toast.LENGTH_LONG).show();
         startActivity(View_SpeedTest);
     }
 

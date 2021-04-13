@@ -10,13 +10,17 @@ import android.os.HardwarePropertiesManager;
 import android.os.StatFs;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -25,7 +29,15 @@ import static java.lang.System.getProperty;
 
 public class procs extends AppCompatActivity {
 
-    private TextView infoModel;
+    TextView textView ;
+    ProcessBuilder processBuilder;
+    String Holder = "";
+    String[] DATA = {"/system/bin/cat", "/proc/cpuinfo"};
+    InputStream inputStream;
+    Process process ;
+    byte[] byteArry ;
+
+    /*private TextView infoModel;
     private TextView infoManuf;
     private TextView infoDev;
     private TextView infoNomHard;
@@ -47,20 +59,48 @@ public class procs extends AppCompatActivity {
             //Initialisation tempo avant le nouvel appel de la tache de fond
             monGestionnaire.postDelayed(this, periode);
         }
-    };
+    };*/
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_procs);
-        Button button = (Button) findViewById(R.id.button);
+
+        textView = (TextView)findViewById(R.id.textView);
+
+        byteArry = new byte[1024];
+
+        try{
+            processBuilder = new ProcessBuilder(DATA);
+
+            process = processBuilder.start();
+
+            inputStream = process.getInputStream();
+
+            while(inputStream.read(byteArry) != -1){
+
+                Holder = Holder + new String(byteArry);
+            }
+
+            inputStream.close();
+
+        } catch(IOException ex){
+
+            ex.printStackTrace();
+        }
+
+        textView.setText(Holder);
+
+
+
+        /*Button button = (Button) findViewById(R.id.button);
         HardwarePropertiesManager hPM;
 
         String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
         // textView is the TextView view that should display it
-        clock.setText(currentDateTimeString);
+        //clock.setText(currentDateTimeString);
 
         //informarion générale invariante
         infoModel = findViewById(R.id.infoModel);
@@ -104,14 +144,32 @@ public class procs extends AppCompatActivity {
 
 
         monGestionnaire = new Handler();
-        monGestionnaire.postDelayed(tacheDeFond, periode);
+        monGestionnaire.postDelayed(tacheDeFond, periode);*/
 
     };
 
-    public void menuPrin(View v) {
+    public void BTN_Back(View view) {
+        Intent BTN_Back = new Intent(procs.this, MainActivity.class);
+        this.finish();
+        startActivity(BTN_Back);
+    }
+
+    public void View_Memory(View view) {
+        Intent BTN_Back = new Intent(procs.this, MemoryActivity.class);
+        this.finish();
+        startActivity(BTN_Back);
+    }
+
+    public void View_Storage(View view) {
+        Intent BTN_Back = new Intent(procs.this, StorageActivity.class);
+        this.finish();
+        startActivity(BTN_Back);
+    }
+
+    /*public void menuPrin(View v) {
 
         Intent intent1 = new Intent(procs.this, MainActivity.class);
         startActivity(intent1);
-    };
+    };*/
 
 }

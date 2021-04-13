@@ -7,8 +7,6 @@ import androidx.core.content.ContextCompat;
 
 
 import android.Manifest;
-import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,15 +17,12 @@ import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
 import android.text.format.Formatter;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -336,9 +331,8 @@ public class netWork extends AppCompatActivity {
     }
 
     public void View_SpeedTest(View view) {
-        Intent View_SpeedTest = new Intent(netWork.this, SpeedTestActivity.class);
+        Intent View_SpeedTest = new Intent(netWork.this, SensorActivity.class);
         this.finish();
-        Toast.makeText(getApplicationContext(),  "/!\\ Veuillez attendre le chargement du site pour effectuer un SpeedTest", Toast.LENGTH_LONG).show();
         startActivity(View_SpeedTest);
     }
 
@@ -347,9 +341,6 @@ public class netWork extends AppCompatActivity {
         this.finish();
         startActivity(View_SimInfo);
     }
-
-
-
 
 
 }

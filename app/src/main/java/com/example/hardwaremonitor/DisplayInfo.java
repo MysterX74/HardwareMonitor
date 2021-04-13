@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -106,9 +105,8 @@ public class DisplayInfo extends AppCompatActivity {
     }
 
     public void View_SpeedTest(View view) {
-        Intent View_SpeedTest = new Intent(DisplayInfo.this, SpeedTestActivity.class);
+        Intent View_SpeedTest = new Intent(DisplayInfo.this, SensorActivity.class);
         this.finish();
-        Toast.makeText(getApplicationContext(), "/!\\ Veuillez attendre le chargement du site pour effectuer un SpeedTest", Toast.LENGTH_LONG).show();
         startActivity(View_SpeedTest);
     }
 

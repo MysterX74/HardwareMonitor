@@ -5,8 +5,124 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".procs"
+    android:background="@drawable/background_gradiant"
     tools:ignore="ExtraText">
 
+    <TextView
+        android:id="@+id/TV_Titre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ScrollCpuInfo"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+
+        android:text="CPU Info"
+        android:textSize="40dp"
+        android:textColor="#000000"/>
+
+    <ScrollView
+        android:background="#FFF"
+        android:id="@+id/ScrollCpuInfo"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintTop_toBottomOf="@+id/TV_Titre"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_Storage"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:padding="10dp"
+                android:text="CPU Information Display Here"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/textView"
+                android:textColor="#000000"
+                android:textSize="15dp"
+                android:gravity="left"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/BTN_Storage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@+id/ScrollCpuInfo"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_Back"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/BTN_RAM"
+
+        android:src="@drawable/ic_storage_x48"
+        android:onClick="View_Storage"
+        android:background="#B9000000"
+        android:minHeight="60dp"
+        android:minWidth="70dp"
+        />
+
+    <ImageButton
+        android:id="@+id/BTN_RAM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@+id/ScrollCpuInfo"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_Back"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/BTN_Storage"
+
+        android:src="@drawable/ic_memory_x48"
+        android:onClick="View_Memory"
+        android:background="#B9000000"
+        android:minHeight="60dp"
+        android:minWidth="70dp"
+        />
+
+
+    <ImageButton
+        android:id="@+id/BTN_Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        app:layout_constraintTop_toBottomOf="@+id/BTN_RAM"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+
+
+
+        android:textSize="35dp"
+        android:src="@drawable/ic_homemenu_x48"
+        android:onClick="BTN_Back"
+        android:background="@drawable/round_button"
+        android:minHeight="60dp"
+        android:minWidth="60dp"/>
+
+
+
+
+    <!--
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -35,7 +151,7 @@
 
     <TextView
         android:id="@+id/clock"
-        android:text=clock
+        android:text="clock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -299,6 +415,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/separationInfoBtn"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
